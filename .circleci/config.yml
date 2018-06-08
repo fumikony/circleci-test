@@ -10,4 +10,4 @@ jobs:
           command: date
       - run:
           name: install
-          command: bash install.sh
+          command: bash .circleci/install.sh

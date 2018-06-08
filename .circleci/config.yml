@@ -6,8 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Print the Current Time
-          command: date
+          name: os-release
+          command: cat /etc/os-release
       - run:
           name: install
           command: bash .circleci/install.sh
+      - run:
+          name: aws s3 ls
+          command: aws s3 ls

@@ -6,5 +6,7 @@ jobs:
     steps:
       - checkout
       - run: git --version
+      - run: ssh git@github.com
       - run: date >> README.md
+      - run: git commit -am 'update from Circle CI!'
       - run: git push

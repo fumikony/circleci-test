@@ -2,15 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: centos:7
+      - image: ruby
     steps:
       - checkout
-      - run:
-          name: os-release
-          command: cat /etc/os-release
-      - run:
-          name: install
-          command: bash .circleci/install.sh
-      - run:
-          name: aws s3 ls
-          command: aws s3 ls
+      - run: git --version

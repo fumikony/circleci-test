@@ -8,5 +8,7 @@ jobs:
       - run: git --version
       - run: ssh git@github.com || true
       - run: date >> README.md
+      - run: git config --global user.email "you@example.com"
+      - run: git config --global user.name "Your Name"
       - run: git commit -am 'update from Circle CI!' || true
       - run: git push

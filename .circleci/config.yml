@@ -1,8 +1,10 @@
 version: 2
 jobs:
-  build:
+  job01:
     docker:
       - image: ruby
     steps:
       - checkout
       - run: git --version
+      - run: date >> README.md
+      - run: git push

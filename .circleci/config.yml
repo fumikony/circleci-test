@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  job01:
+  build:
     docker:
       - image: ruby
     steps:

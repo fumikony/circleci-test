@@ -6,14 +6,14 @@ jobs:
     steps:
       - checkout
       - run: git --version
-      - run: ssh git@github.com || true
+      # - run: ssh git@github.com || true
       - run: |
           cat README.md
-          date >> README.md
+          echo "- $(date)" >> README.md
           cat README.md
       - run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
       - run: |
           git commit -am '[ci skip] update from Circle CI!'
-          git push
+          # git push

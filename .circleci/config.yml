@@ -16,22 +16,23 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
       - run: |
+          git pull
           git commit -am '[ci skip] update from Circle CI!'
           git push
 
-# workflows:
-#   version: 2
-#   commit:
-#     jobs:
-#       - build
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
 
-#   daily:
-#     triggers:
-#       - schedule:
-#           cron: "0 0 * * *"
-#           filters:
-#             branches:
-#               only:
-#                 - master
-#     jobs:
-#       - build
+  daily:
+    triggers:
+      - schedule:
+          cron: "* * * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build

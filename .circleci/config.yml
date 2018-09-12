@@ -7,6 +7,7 @@ jobs:
       - checkout
       - run: git --version
       - run: ssh git@github.com || true
+      - run: git pull
       - run: cat README.md
       - run: echo "- $(date)" >> README.md
       - run: cat README.md
@@ -16,7 +17,6 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
       - run: |
-          git pull
           git commit -am '[ci skip] update from Circle CI!'
           git push
 

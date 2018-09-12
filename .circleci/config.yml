@@ -5,16 +5,17 @@ jobs:
       - image: ruby
     steps:
       - checkout
-      - run: git --version
-      - run: ssh git@github.com || true
-      - run: cat README.md
-      - run: echo "- $(date)" >> README.md
-      - run: cat README.md
-      - run: |
-          echo $FOO
-      - run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-      - run: |
-          git commit -am '[ci skip] update from Circle CI!'
-          git push
+      - run: date
+
+workflows:
+  version: 2
+  daily:
+    triggers:
+      - schedule:
+          cron: "* * * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build

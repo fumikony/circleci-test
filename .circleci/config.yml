@@ -18,3 +18,16 @@ jobs:
       - run: |
           git commit -am '[ci skip] update from Circle CI!'
           git push
+
+workflows:
+  version: 2
+  daily:
+    triggers:
+      - schedule:
+          cron: "* * * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
